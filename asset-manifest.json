@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MyMusicTask/static/css/main.72a830fa.css",
-    "main.js": "/MyMusicTask/static/js/main.fe88f261.js",
+    "main.css": "/MyMusicTask/static/css/main.0d5b61eb.css",
+    "main.js": "/MyMusicTask/static/js/main.6f187fe2.js",
     "index.html": "/MyMusicTask/index.html",
-    "main.72a830fa.css.map": "/MyMusicTask/static/css/main.72a830fa.css.map",
-    "main.fe88f261.js.map": "/MyMusicTask/static/js/main.fe88f261.js.map"
+    "main.0d5b61eb.css.map": "/MyMusicTask/static/css/main.0d5b61eb.css.map",
+    "main.6f187fe2.js.map": "/MyMusicTask/static/js/main.6f187fe2.js.map"
   },
   "entrypoints": [
-    "static/css/main.72a830fa.css",
-    "static/js/main.fe88f261.js"
+    "static/css/main.0d5b61eb.css",
+    "static/js/main.6f187fe2.js"
   ]
 }
