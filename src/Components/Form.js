@@ -3,8 +3,8 @@ import { validate } from "./validate";
 import { Input } from "./Input";
 import { Select } from "./Select";
 import { InputPhoto } from "./InputPhoto";
+import { Spinner } from "./Spinner";
 import styles from './Form.module.scss'
-
 export function Form() {
     const [values, setValues] = useState({
         firstName: "",
@@ -15,7 +15,9 @@ export function Form() {
     });
     const [selectedImage, setSelectedImage] = useState(null);
     const [errorFormMessages, setErrorFormMessages] = useState(null);
-
+    const [post, setPost] = useState(false);
+    const [send, setSend] = useState(false);
+    const [failToFetch, setFailToFetch] = useState('')
     const handleUploadFile = (event) => {
         setSelectedImage(event.target.files[0]);
     }
@@ -53,8 +55,50 @@ export function Form() {
 
         return errorDataMessages;
     }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const errorFormMessages = validate(values);
+        setErrorFormMessages(errorFormMessages);
+        if (errorFormMessages) return;
+        postFormSubmit(values);
+    }
+    const postFormSubmit = (values) => {
+        setSend(true)
+        fetch("https://localhost:60001/Contractor/Save", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(values),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setPost(data);
+                setSend(false)
+                setSelectedImage(null)
+                setValues({
+                    firstName: "",
+                    lastName: "",
+                    typeSelect: '',
+                    pesel: '',
+                    nip: '',
+                })
+                setTimeout(() => {
+                    setPost(null);
+                }, 5000);
+            }).catch(err => {
+                setSend(false)
+                setFailToFetch("Nie znaleziono metody zapisu");
+                setTimeout(() => {
+                    setFailToFetch('');
+                }, 5000);
+        })
+    }
     return (
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+            {post && (
+                <span className={styles.successMessage}>
+                    Wiadomość została przesłana
+                </span>
+            )}
             <Input
                 text={'Wpisz swoje imię:'}
                 type={'text'}
@@ -104,6 +148,15 @@ export function Form() {
                 selectedImage={selectedImage}
                 setSelectedImage={setSelectedImage}
             />
+            {send
+                ? <Spinner/>
+                : <input
+                    type="submit"
+                    value="Wyślij!"
+                    className={styles.submitButton}
+                />
+            }
+            {failToFetch && <span className={styles.errorMessage}>{failToFetch}</span> }
         </form>
     )
 }

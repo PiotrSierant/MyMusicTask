@@ -16,3 +16,19 @@
     margin-top: .5rem;
   }
 }
+.successMessage {
+  text-align: center;
+  background-color: seagreen;
+  width: 100%;
+  padding: .5rem 2rem;
+  color: whitesmoke;
+  border-radius: .5rem;
+}
+.errorMessage {
+  text-align: center;
+  background-color: #ff3333;
+  width: 100%;
+  padding: .5rem 2rem;
+  color: whitesmoke;
+  border-radius: .5rem;
+}

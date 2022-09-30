@@ -6,7 +6,7 @@ export function InputPhoto({info, type, text, value, accept, handleUploadFile, s
     return (
         <>
             {selectedImage ?
-                <section data-aos="zoom-in">
+                <section className={styles.input__Photo__sectionImage} data-aos="zoom-in">
                     <button onClick={() => setSelectedImage(null)}>Usuń zdjęcie</button>
                     <img className={styles.input__Photo__image} alt="My added file" src={URL.createObjectURL(selectedImage)}/>
                 </section>
