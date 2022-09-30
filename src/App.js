@@ -1,8 +1,11 @@
 import React from 'react';
+import {Form} from "./Components/Form";
 
 function App() {
   return (
-      <h1> test </h1>
+      <div>
+        <Form />
+      </div>
   );
 }
 
