@@ -1,6 +1,6 @@
 export function validate(values) {
     const validatePESEL = (pesel) => {
-        let peselCorrectLength = 9;
+        let peselCorrectLength = 11;
         let toNumber = Number(pesel);
         return !(pesel.length !== peselCorrectLength || isNaN(toNumber));
     };

@@ -30,7 +30,7 @@ export function Form() {
             }));
         }
         if(name === 'pesel') {
-            const limit = 9;
+            const limit = 11;
             values.nip = '';
             setErrorFormMessages(null)
             setValues((prevState) => ({
@@ -84,7 +84,7 @@ export function Form() {
                 setTimeout(() => {
                     setPost(null);
                 }, 5000);
-            }).catch(err => {
+            }).catch(() => {
                 setSend(false)
                 setFailToFetch("Nie znaleziono metody zapisu");
                 setTimeout(() => {
