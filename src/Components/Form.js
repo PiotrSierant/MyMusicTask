@@ -1,15 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { validate } from "./validate";
 import { Input } from "./Input";
 import { Select } from "./Select";
+import { InputPhoto } from "./InputPhoto";
 import styles from './Form.module.scss'
-// e) Zdjęcie ( Podgląd ma wyświetlić po wybraniu pliku z dysku)
-// 2. Formularz ma walidować dane Numeru identyfikacyjnego:
-// - Czy wprowadzono poprawny PESEL/ NIP
-// 3. Zdjęcie:
-// - Format JPG/JPEG
-// - Acpect ratio 1:1 (zdjęcie w kwadracie)
-//  const [errorFormMessages, setErrorFormMessages] = useState(null);
+
 export function Form() {
     const [values, setValues] = useState({
         firstName: "",
@@ -18,6 +13,12 @@ export function Form() {
         pesel: '',
         nip: '',
     });
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [errorFormMessages, setErrorFormMessages] = useState(null);
+
+    const handleUploadFile = (event) => {
+        setSelectedImage(event.target.files[0]);
+    }
     const handleChange = (event) => {
         const { name, value } = event.target;
         if(name === 'firstName' || name === 'lastName' || name === 'typeSelect') {
@@ -28,6 +29,8 @@ export function Form() {
         }
         if(name === 'pesel') {
             const limit = 9;
+            values.nip = '';
+            setErrorFormMessages(null)
             setValues((prevState) => ({
                 ...prevState,
                 [name]: event.target.value.slice(0, limit),
@@ -35,14 +38,21 @@ export function Form() {
         }
         if(name === 'nip') {
             const limit = 10;
+            values.pesel = '';
+            setErrorFormMessages(null)
             setValues((prevState) => ({
                 ...prevState,
                 [name]: event.target.value.slice(0, limit),
             }));
         }
-
     }
+    const validateForm = (event) => {
+        event.preventDefault();
+        const errorDataMessages = validate(values);
+        setErrorFormMessages(errorDataMessages);
 
+        return errorDataMessages;
+    }
     return (
         <form className={styles.form}>
             <Input
@@ -70,6 +80,8 @@ export function Form() {
                     info={'nip'}
                     value={values.nip}
                     handleChange={handleChange}
+                    validateForm={validateForm}
+                    errorFormMessages={errorFormMessages}
                 />
             }
             { values.typeSelect === 'Person' &&
@@ -79,11 +91,19 @@ export function Form() {
                     info={'pesel'}
                     value={values.pesel}
                     handleChange={handleChange}
+                    validateForm={validateForm}
+                    errorFormMessages={errorFormMessages}
                 />
             }
-
-
-
+            <InputPhoto
+                text={'Wybierz zdjęcie'}
+                type={"file"}
+                info={"myImage"}
+                accept={'image/jpeg'}
+                handleUploadFile={handleUploadFile}
+                selectedImage={selectedImage}
+                setSelectedImage={setSelectedImage}
+            />
         </form>
     )
 }

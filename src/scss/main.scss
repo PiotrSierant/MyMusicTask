@@ -1,6 +1,10 @@
 @import "reset";
 @import "variables";
-
 :root {
   font-family: $font-base;
+}
+body {
+  background: #dedede;
+  background: -webkit-linear-gradient(to right, #D4D3DD, #dedede);
+  background: linear-gradient(to right, #D4D3DD, #dedede);
 }
