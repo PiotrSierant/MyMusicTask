@@ -55,6 +55,7 @@ test("display select value after user choose value", async () => {
 
     expect(textDisplay).toBeInTheDocument();
 })
+
 test('display select other value after user choose value', async () => {
     render(<Form />)
     const selectElement = screen.getByDisplayValue('wybierz');
