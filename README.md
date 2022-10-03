@@ -14,7 +14,7 @@
 
 Zadanie rekrutacyjne na Junior Frontend Developera. Formularz kontrachenta z odpowiednimi polami, walidacją oraz wysłaniem danych pod wskazany adres.
 
-### Built With
+### Wykonane w:
 
 <div align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" width="52" alt="html5 logo"  />
@@ -24,23 +24,23 @@ Zadanie rekrutacyjne na Junior Frontend Developera. Formularz kontrachenta z odp
   <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" height="40" width="52" alt="react logo"  />
 </div>
 
-### Tests
+### Testy
 
 <img src="image/tests.png" alt="Screenshot-test">
 
-### Installation
+### Instalacja
 
-_Below is an example of how you can be installing app._
+_Poniżej znajduje się przykład instalacji aplikacji._
 
-1. Clone the repo
+1. Sklonuj repozytorium
    ```sh
    git clone https://github.com/PiotrSierant/MyMusicTask.git
    ```
-2. Install NPM packages
+2. Zainstaluj pakiety
    ```sh
    npm install
    ```
-3. Start project
+3. Rozpocznij projekt
    ```sh
    npm start
    ```
