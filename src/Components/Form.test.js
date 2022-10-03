@@ -2,6 +2,8 @@ import React from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Form } from './Form';
+import user from '@testing-library/user-event'
+import styles from "./InputPhoto.module.scss";
 
 describe('Render form component', () => {
     test("renders component", async () => {
@@ -64,4 +66,36 @@ test('display select other value after user choose value', async () => {
     const textDisplay = await screen.findByDisplayValue('Firma');
 
     expect(textDisplay).toBeInTheDocument();
+})
+
+
+test("should upload the file", () => {
+    const file = new File(["hello"], "hello.png", { type: "image/png" })
+    const text= 'Wybierz zdjęcie';
+    const type= "file";
+    const info= "myImage";
+    const accept= 'image/jpeg';
+    render(<label
+        htmlFor={info}
+        className={styles.input__Photo}
+        data-aos="zoom-in"
+    >
+        {text}
+        <input
+            type={type}
+            name={info}
+            id={info}
+            placeholder={info}
+            accept={accept}
+            required
+            data-testid='element'
+        />
+    </label>
+ )
+
+    const input = screen.getByTestId("element")
+    user.upload(input, file)
+
+    expect(input.files[0]).toStrictEqual(file)
+    expect(input.files).toHaveLength(1)
 })
