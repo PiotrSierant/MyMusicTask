@@ -30,7 +30,7 @@ Zadanie rekrutacyjne na Junior Frontend Developera. Formularz kontrachenta z odp
 
 ### Installation
 
-_Below is an example of how you can  installing app._
+_Below is an example of how you can be installing app._
 
 1. Clone the repo
    ```sh
