@@ -24,6 +24,10 @@ Zadanie rekrutacyjne na Junior Frontend Developera. Formularz kontrachenta z odp
   <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" height="40" width="52" alt="react logo"  />
 </div>
 
+### Tests
+
+<img src="image/tests.png" alt="Screenshot-test">
+
 ### Installation
 
 _Below is an example of how you can  installing app._
