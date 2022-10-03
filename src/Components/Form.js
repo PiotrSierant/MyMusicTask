@@ -26,7 +26,7 @@ export function Form() {
         if(name === 'firstName' || name === 'lastName' || name === 'typeSelect') {
             setValues((prevState) => ({
                 ...prevState,
-                [name]: value,
+                [name]: value.trim(),
             }));
         }
         if(name === 'pesel') {
